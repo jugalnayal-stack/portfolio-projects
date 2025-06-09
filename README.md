@@ -7,30 +7,48 @@ This repository serves as my technical showcase, blending my software engineerin
 
 # 🎯 Project Goals
 ✅ Implement end-to-end DevSecOps pipeline across phases: Plan → Code → Test → Build → Release → Deploy → Run
+
 ✅ Demonstrate secure application development using Astro + Node.js
+
 ✅ Integrate static and dynamic analysis tools (SAST, DAST, Secrets scanning) into CI/CD
+
 ✅ Leverage AWS cloud security best practices for deployment and monitoring
+
 ✅ Document threat models, pentest results, vulnerability management, and security posture in a transparent way
 
 
 # 🗂️ Portfolio Structure
 CYBERSEC-PORTFOLIO/
 ├── resume-site/                 → DevSecOps-driven Resume & Portfolio Website
+
 │   ├── frontend/                → Astro frontend
+
 │   ├── backend/                 → Node.js API with JWT, OAuth, security hardening
+
 │   ├── .github/workflows/       → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+
 │   ├── Dockerfile               → Multi-stage Docker build
+
 │   ├── nginx/                   → Nginx reverse proxy config (secure headers, SSL)
+
 │   ├── aws/                     → AWS IaC, deployment notes, security configs
+
 │   ├── threat-models/           → Threat modeling artifacts (STRIDE, MITRE ATT&CK mappings)
+
 │   ├── vulnerability-reports/   → SAST, Secrets, DAST, Dependency scan reports
+
 │   ├── pentests/                → Manual pentest results and scripts
+
 │   ├── log-analysis/            → SOC log analysis outputs, CloudWatch insights
+
 │   ├── docs/                    → Architecture diagrams, SECURITY.md, CHANGELOG.md
+
 │   ├── SECURITY.md              → Security disclosure policy
+
 │   └── README.md                → Project-specific README for Resume Site
 │
 ├── README.md                    → You're here! Portfolio root README
+
 └── SECURITY.md                  → Portfolio-wide security disclosure policy
 
 
