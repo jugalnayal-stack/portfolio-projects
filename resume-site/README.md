@@ -26,7 +26,6 @@ It serves both as my public-facing portfolio site and as a **hero project** to s
     - Pentest reports
     - CI/CD scan results
     - Monitoring logs
-- Apply key projects from the *50 Cybersecurity Projects to Get Hired* eBook
 
 
 
