@@ -1,0 +1,59 @@
+DevSecOps Toolchain Applied to Your Portfolio Website:
+| Phase       | Toolchain Activity                             | How You Can Implement It in Your Project                                                                                                         |
+| ----------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Plan**    | 1. Address tech/security debt, threat modeling | Create a `SECURITY.md`, threat model, document expected risks and planned mitigations.                                                           |
+| **Create**  | 2. IDE Security Plug-Ins                       | Use ESLint + security plugin (e.g., `eslint-plugin-security`) in your local dev + GitHub Codespaces.                                             |
+| **Verify**  | 3. SAST/DAST/IAST/SCA                          | - Use **Semgrep**, **TruffleHog**, and `npm audit` in CI<br>- Add **OWASP ZAP** to scan deployed frontend/backend                                |
+| **Preprod** | 4. Fuzzing, chaos, integration test            | You can simulate minor fuzzing attacks (e.g., malformed input to backend APIs) using custom scripts or tools like Postman/Newman                 |
+| **Preprod** | 5. Software Signing                            | (Optional) Sign builds or Docker images using Cosign or Notary                                                                                   |
+| **Prevent** | 6. Signature verify, defense-in-depth          | - CSP headers, Helmet.js, `express-rate-limit`<br>- Docker image hardening<br>- Use Nginx with security headers                                  |
+| **Detect**  | 7. Monitoring, penetration tests               | - Log rate-limited requests, auth failures<br>- Run **manual pentests** or automated ZAP scans<br>- Add RASP-like controls in Express middleware |
+| **Respond** | 8. Security orchestration, obfuscation         | - Capture logs on EC2, rotate with logrotate<br>- Use WAF if deploying behind AWS ALB/CloudFront<br>- Add basic response plan in `SECURITY.md`   |
+| **Predict** | 9. Vulnerability analysis, IoCs                | - Use Snyk CLI or Dependabot<br>- Add structured JSON output from ZAP to CI reports                                                              |
+| **Adapt**   | 10. Modify incident response, fix debt         | - Track issues in GitHub Projects<br>- Show a changelog of resolved security items                                                               |
+
+
+
+
+Suggestd folder structure:
+CYBERSEC-PORTFOLIO/
+├── resume-site/                      # Astro + Node backend portfolio website
+│   ├── frontend/                     # Astro code
+│   ├── backend/                      # Node.js API (contact form, etc.)
+│   ├── Dockerfile
+│   ├── .github/workflows/           # CI/CD with SAST, linting, deploy
+│   └── README.md                     # Project-specific
+│
+├── devsecops-pipeline/              # Pipeline with CI/CD + security automation
+│   ├── github-actions/              # SAST, DAST, secrets scan workflows
+│   ├── sample-node-app/             # Repo being pipelined (could be same as above)
+│   └── README.md
+│
+├── threat-models/                   # STRIDE, attack trees, MITRE mapping
+│   ├── resume-site-threat-model.md
+│   ├── soc-detection-model.md
+│   └── architecture-diagrams/
+│
+├── detection-scripts/               # SOC or detection projects
+│   ├── email-tampering-detector/    # Rust or Python
+│   ├── soc-log-analysis/            # Log parsing, regex, correlation rules
+│   └── README.md
+│
+├── awareness-materials/             # Security awareness training content
+│   ├── phishing-sim-design.md
+│   ├── user-guide.pdf
+│   └── README.md
+│
+├── vulnerability-reports/           # Manual + tool-based reports
+│   ├── zap-scan-report.md
+│   ├── dependency-check-report.md
+│   └── README.md
+│
+├── pentests/                        # DAST, ZAP/Nikto, metasploit
+│   ├── internal-pentest.md
+│   ├── webapp-pentest.md
+│   └── README.md
+│
+├── SECURITY.md                      # Security policy, contact, disclosure
+├── README.md                        # Main portfolio overview
+└── tags.yaml                        # (optional) maps projects to OWASP, NIST, MITRE
