@@ -1,8 +1,8 @@
 # 🌐 DevSecOps-Driven Resume & Portfolio Website
 
-This is my personal **Resume & Portfolio Website** project — built with a focus on **secure development practices** and a fully integrated **DevSecOps pipeline**.
+This is my personal **Resume & Portfolio Website** project built with a focus on secure development practices and a fully integrated DevSecOps pipeline.
 
-It serves both as my public-facing portfolio site and as a **hero project** to showcase my skills across:
+It serves both as my public-facing portfolio site and as a hero project to showcase my skills across:
 
 ✅ Secure application development  
 ✅ CI/CD pipeline security automation  
