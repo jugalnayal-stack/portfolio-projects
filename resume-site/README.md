@@ -45,7 +45,6 @@ resume-site/
 
 ## 🗂️ Project Structure
 
-```plaintext
 resume-site/
 ├── frontend/               → Astro frontend
 ├── backend/                → Node.js API (JWT, OAuth, secure contact form)
@@ -59,7 +58,6 @@ resume-site/
 ├── log-analysis/           → SOC log analysis outputs, CloudWatch insights
 ├── docs/                   → Architecture diagrams, SECURITY.md, CHANGELOG.md
 └── README.md               → Project overview and DevSecOps context
-```
 
 ---
 
