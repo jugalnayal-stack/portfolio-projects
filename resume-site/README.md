@@ -1,63 +1,67 @@
 # 🌐 DevSecOps-Driven Resume & Portfolio Website
 
-This is my personal **Resume & Portfolio Website** project built with a focus on secure development practices and a fully integrated DevSecOps pipeline.
+This project is a DevSecOps-enabled personal resume and portfolio website built and deployed with security and automation in mind.
 
-It serves both as my public-facing portfolio site and as a hero project to showcase my skills across:
-
-✅ Secure application development  
-✅ CI/CD pipeline security automation  
-✅ AWS cloud security  
-✅ Threat modeling & documentation  
-✅ Vulnerability management  
-✅ Monitoring & logging  
+It demonstrates how even a simple site can be developed, tested, and deployed with industry-grade security practices across the full software delivery lifecycle.
 
 
 
-## 🎯 Project Goals
+## 🔐 DevSecOps Highlights
 
-- Build a **modern, responsive portfolio website** using Astro + Node.js backend
-- Implement **secure coding practices** (OWASP Top 10 focus)
-- Integrate a **full DevSecOps pipeline** aligned to the SDLC:
-    - Plan → Code → Test → Build → Release → Deploy → Run
-- Deploy securely on **AWS** (EC2 + Nginx reverse proxy)
-- Provide a public **security posture**:
-    - SECURITY.md
-    - Threat models
-    - Pentest reports
-    - CI/CD scan results
-    - Monitoring logs
+CI/CD pipeline via GitHub Actions
+
+SAST via Semgrep
+
+Secret scanning via detect-secrets
+
+Threat modeling (STRIDE, DFD, Risk Matrix)
+
+Input validation, rate limiting, HTTP hardening
+
+Deployed on AWS EC2 with Nginx + HTTPS
+
+Future integrations: SBOM (Syft), image scan (Trivy), ZAP DAST, Falco
 
 
 
 ## 🗂️ Project Structure
 
 resume-site/
-├── frontend/                → Astro frontend
+├── frontend/               → Astro frontend
+├── backend/                → Node.js API (JWT, OAuth, secure contact form)
+├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+├── Dockerfile              → Multi-stage Docker build
+├── nginx/                  → Nginx reverse proxy config
+├── aws/                    → AWS IaC, deployment notes, security configs
+├── threat-models/          → Threat modeling artifacts (STRIDE, MITRE mappings)
+├── vulnerability-reports/  → SAST, Secrets, DAST, Dependency scan reports
+├── pentests/               → Manual pentest results and scripts
+├── log-analysis/           → SOC log analysis outputs, CloudWatch insights
+├── docs/                   → Architecture diagrams, SECURITY.md, CHANGELOG.md
+└── README.md               → Project overview and DevSecOps context
 
-├── backend/                 → Node.js API (JWT, OAuth, secure contact form)
 
-├── .github/workflows/       → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+---
 
-├── Dockerfile               → Multi-stage Docker build
+## 🗂️ Project Structure
 
-├── nginx/                   → Nginx reverse proxy config
+```plaintext
+resume-site/
+├── frontend/               → Astro frontend
+├── backend/                → Node.js API (JWT, OAuth, secure contact form)
+├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+├── Dockerfile              → Multi-stage Docker build
+├── nginx/                  → Nginx reverse proxy config
+├── aws/                    → AWS IaC, deployment notes, security configs
+├── threat-models/          → Threat modeling artifacts (STRIDE, MITRE mappings)
+├── vulnerability-reports/  → SAST, Secrets, DAST, Dependency scan reports
+├── pentests/               → Manual pentest results and scripts
+├── log-analysis/           → SOC log analysis outputs, CloudWatch insights
+├── docs/                   → Architecture diagrams, SECURITY.md, CHANGELOG.md
+└── README.md               → Project overview and DevSecOps context
+```
 
-├── aws/                     → AWS IaC, deployment notes, security configs
-
-├── threat-models/           → Threat modeling artifacts (STRIDE, MITRE mappings)
-
-├── vulnerability-reports/   → SAST, Secrets, DAST, Dependency scan reports
-
-├── pentests/                → Manual pentest results and scripts
-
-├── log-analysis/            → SOC log analysis outputs, CloudWatch insights
-
-├── docs/                    → Architecture diagrams, SECURITY.md, CHANGELOG.md
-
-├── SECURITY.md              → Security disclosure policy
-
-└── README.md                → You're here!
-
+---
 
 ## 🛡️ DevSecOps Pipeline Phases & Actions
 
@@ -66,35 +70,32 @@ resume-site/
 | Plan            | Threat modeling, security requirements, SECURITY.md                        |
 | Code            | Secure coding, eslint-plugin-security, pre-commit hooks                    |
 | Test            | SAST (Semgrep), Secrets scan (TruffleHog), Dependency scan (Snyk/OWASP DC) |
-| Build           | Static scanning of build artifacts                                         |
+| Build           | Docker build + static artifact scan (Trivy)                                |
 | Release (Stage) | ZAP baseline scan in staging                                               |
 | Deploy (Prod)   | Hardened Docker deploy to EC2, Nginx, HTTPS, ZAP active scan               |
 | Run             | Periodic SAST & DAST scans, CloudWatch logging, SOC log analysis           |
 
-
+---
 
 ## 🚀 Tech Stack & Tools
-Frontend: Astro, TailwindCSS
 
-Backend: Node.js (Express), JWT, OAuth, Helmet, rate limiting, input validation
+- **Frontend:** Astro, TailwindCSS
+- **Backend:** Node.js (Express), JWT, OAuth, Helmet, rate limiting, input validation
+- **CI/CD Pipeline:** GitHub Actions, Semgrep, TruffleHog, OWASP ZAP, Snyk / OWASP DC
+- **Cloud Infrastructure:** AWS EC2, Nginx, ACM for HTTPS, CloudWatch Logs
+- **Containerization:** Docker
+- **Threat Modeling:** STRIDE, DFD, MITRE ATT&CK mapping
 
-Pipeline: GitHub Actions, Semgrep, TruffleHog, OWASP ZAP, Snyk / OWASP Dependency-Check
-
-Cloud: AWS EC2, Nginx reverse proxy, ACM (HTTPS), CloudWatch Logs
-
-Containerization: Docker
-
-Threat Modeling: STRIDE, MITRE ATT&CK mapping
-
+---
 
 ## 📜 Progress Tracker
 
 | Phase   | Current Status                                |
 | ------- | --------------------------------------------- |
-| Plan    | ✅ Threat model draft in progress              |
+| Plan    | ✅ Completed — Threat model, DFD, security planning |
 | Code    | 🚧 In development (secure frontend + backend) |
-| Test    |  To be integrated                           |
-| Build   |  To be integrated                           |
-| Release |  To be integrated                           |
-| Deploy  |  To be implemented on AWS                   |
-| Run     |  To be implemented                          |
+| Test    | 🔜 SAST, Secrets, and Dependency Scanning     |
+| Build   | 🔜 Docker build + SBOM integration            |
+| Release | 🔜 ZAP Baseline scan integration              |
+| Deploy  | 🔜 CI/CD to EC2 via GitHub Actions            |
+| Run     | 🔜 CloudWatch, log analysis, and alerts       |
