@@ -28,35 +28,27 @@ Future integrations: SBOM (Syft), image scan (Trivy), ZAP DAST, Falco
 
 resume-site/
 ├── frontend/               → Astro frontend
+
 ├── backend/                → Node.js API (JWT, OAuth, secure contact form)
+
 ├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+
 ├── Dockerfile              → Multi-stage Docker build
+
 ├── nginx/                  → Nginx reverse proxy config
+
 ├── aws/                    → AWS IaC, deployment notes, security configs
+
 ├── threat-models/          → Threat modeling artifacts (STRIDE, MITRE mappings)
+
 ├── vulnerability-reports/  → SAST, Secrets, DAST, Dependency scan reports
+
 ├── pentests/               → Manual pentest results and scripts
+
 ├── log-analysis/           → SOC log analysis outputs, CloudWatch insights
+
 ├── docs/                   → Architecture diagrams, SECURITY.md, CHANGELOG.md
-└── README.md               → Project overview and DevSecOps context
 
-
----
-
-## 🗂️ Project Structure
-
-resume-site/
-├── frontend/               → Astro frontend
-├── backend/                → Node.js API (JWT, OAuth, secure contact form)
-├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
-├── Dockerfile              → Multi-stage Docker build
-├── nginx/                  → Nginx reverse proxy config
-├── aws/                    → AWS IaC, deployment notes, security configs
-├── threat-models/          → Threat modeling artifacts (STRIDE, MITRE mappings)
-├── vulnerability-reports/  → SAST, Secrets, DAST, Dependency scan reports
-├── pentests/               → Manual pentest results and scripts
-├── log-analysis/           → SOC log analysis outputs, CloudWatch insights
-├── docs/                   → Architecture diagrams, SECURITY.md, CHANGELOG.md
 └── README.md               → Project overview and DevSecOps context
 
 ---
