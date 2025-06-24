@@ -1,27 +1,26 @@
 # 🌐 DevSecOps-Driven Resume & Portfolio Website
 
 This project is a DevSecOps-enabled personal resume and portfolio website built and deployed with security and automation in mind.
-
-It demonstrates how even a simple site can be developed, tested, and deployed with industry-grade security practices across the full software delivery lifecycle.
-
+It demonstrates how even a simple public-facing application can adopt modern DevSecOps principles with security, compliance, and monitoring built into every phase of delivery.
 
 
 ## 🔐 DevSecOps Highlights
 
-CI/CD pipeline via GitHub Actions
+✅ GitHub Actions CI/CD pipeline
 
-SAST via Semgrep
+✅ Semgrep (SAST)
 
-Secret scanning via detect-secrets
+✅ detect-secrets (Secrets scanning)
 
-Threat modeling (STRIDE, DFD, Risk Matrix)
+✅ OWASP-aligned threat modeling (STRIDE, DFD, Risk Matrix)
 
-Input validation, rate limiting, HTTP hardening
+✅ Helmet, rate limiting, input validation (Joi)
 
-Deployed on AWS EC2 with Nginx + HTTPS
+✅ Deployed on AWS EC2 with Nginx + HTTPS (ACM)
 
-Future integrations: SBOM (Syft), image scan (Trivy), ZAP DAST, Falco
+🆕 Kubernetes Deployment Option (EKS/minikube) for enterprise-scale delivery
 
+🟡 Future: SBOM (Syft), Trivy image scan, OWASP ZAP DAST, Falco runtime alerts
 
 
 ## 🗂️ Project Structure
@@ -31,13 +30,15 @@ resume-site/
 
 ├── backend/                → Node.js API (JWT, OAuth, secure contact form)
 
-├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to AWS)
+├── .github/workflows/      → CI/CD (SAST, Secrets, DAST, Deploy to EC2/EKS)
 
 ├── Dockerfile              → Multi-stage Docker build
 
 ├── nginx/                  → Nginx reverse proxy config
 
-├── aws/                    → AWS IaC, deployment notes, security configs
+├── aws/                    → Terraform IaC (EC2, IAM, S3)
+
+├── k8s/                    → Kubernetes manifests (Deployment, Service, Ingress)
 
 ├── threat-models/          → Threat modeling artifacts (STRIDE, MITRE mappings)
 
@@ -62,19 +63,31 @@ resume-site/
 | Test            | SAST (Semgrep), Secrets scan (TruffleHog), Dependency scan (Snyk/OWASP DC) |
 | Build           | Docker build + static artifact scan (Trivy)                                |
 | Release (Stage) | ZAP baseline scan in staging                                               |
-| Deploy (Prod)   | Hardened Docker deploy to EC2, Nginx, HTTPS, ZAP active scan               |
+| Deploy (Prod)   | 	Option 1: EC2 + Nginx via Terraform
+                        Option 2: Kubernetes (EKS/minikube)                                    |
 | Run             | Periodic SAST & DAST scans, CloudWatch logging, SOC log analysis           |
 
 ---
 
 ## 🚀 Tech Stack & Tools
 
-- **Frontend:** Astro, TailwindCSS
-- **Backend:** Node.js (Express), JWT, OAuth, Helmet, rate limiting, input validation
-- **CI/CD Pipeline:** GitHub Actions, Semgrep, TruffleHog, OWASP ZAP, Snyk / OWASP DC
-- **Cloud Infrastructure:** AWS EC2, Nginx, ACM for HTTPS, CloudWatch Logs
-- **Containerization:** Docker
-- **Threat Modeling:** STRIDE, DFD, MITRE ATT&CK mapping
+Frontend: Astro, TailwindCSS
+
+Backend: Node.js (Express), JWT, OAuth, Helmet, rate limiting, input validation
+
+CI/CD Pipeline: GitHub Actions, Semgrep, TruffleHog, OWASP ZAP, Snyk / OWASP DC
+
+Cloud Hosting: AWS EC2, AWS EKS (Kubernetes)
+
+IaC: Terraform (EC2, IAM, optionally EKS)
+
+Kubernetes: kubectl, YAML manifests (optional: Helm, ArgoCD)
+
+Monitoring: AWS CloudWatch, Falco, Trivy Operator (K8s)
+
+Containerization: Docker
+
+Threat Modeling: STRIDE, DFD, MITRE ATT&CK
 
 ---
 
@@ -87,5 +100,5 @@ resume-site/
 | Test    | 🔜 SAST, Secrets, and Dependency Scanning     |
 | Build   | 🔜 Docker build + SBOM integration            |
 | Release | 🔜 ZAP Baseline scan integration              |
-| Deploy  | 🔜 CI/CD to EC2 via GitHub Actions            |
+| Deploy  | 🔜 EC2 working, Kubernetes setup in progress  |
 | Run     | 🔜 CloudWatch, log analysis, and alerts       |

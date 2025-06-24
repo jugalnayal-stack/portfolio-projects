@@ -88,19 +88,23 @@ General Visitors can view the public resume, browse showcased projects, and opti
 ## 2. 📌 Threat Determination (STRIDE)
 
 
-| ID | STRIDE Category | Component / Flow | Threat Description | Impact | Likelihood | Risk |
-|----|------------------|-------------------|---------------------|--------|-------------|------|
-| T1 | Spoofing | JWT-based auth | Attacker uses forged or stolen JWT to impersonate a user | High | Medium | High |
-| T2 | Spoofing | GitHub Actions or SSH access | Compromise of CI/CD or admin SSH could result in takeover | Critical | Low | High |
-| T3 | Tampering | Contact Form Input | Injection of malicious payloads (e.g., HTML, JS) | Medium | Medium | Medium |
-| T4 | Tampering | CI/CD pipeline | Modifying build steps to inject malware | High | Low | Medium |
-| T5 | Repudiation | API Access Logs | Lack of log integrity may allow users to deny malicious actions | Medium | Low | Low |
-| T6 | Information Disclosure | S3/Static Files (if public) | Public access to private assets (e.g., resume with PII) | High | Medium | High |
-| T7 | Information Disclosure | API responses | Accidental leak of email addresses, stack traces, or system errors | Medium | Medium | Medium |
-| T8 | Denial of Service | API Abuse | Spamming `/api/contact` endpoint to flood logs or CPU | High | High | High |
-| T9 | Denial of Service | Nginx / EC2 | Resource exhaustion due to malformed requests | Medium | Medium | Medium |
-| T10 | Elevation of Privilege | Misconfigured OAuth Scopes (future) | OAuth token grants more access than intended | High | Low | Medium |
-| T11 | Elevation of Privilege | GitHub Actions IAM Role | Over-privileged CI role may alter AWS resources | High | Medium | High |
+| ID   | STRIDE Category        | Threat                                             | Mitigation                                          |
+|:-----|:-----------------------|:---------------------------------------------------|:----------------------------------------------------|
+| T1   | Spoofing               | JWT token interception and reuse                   | HTTPS everywhere, short token TTL, token signing    |
+| T2   | Tampering              | Modification of data in transit                    | TLS encryption, checksum validation                 |
+| T3   | Repudiation            | Lack of logs for user actions                      | CloudWatch logging, audit trail                     |
+| T4   | Information Disclosure | Sensitive data leakage via API responses           | Output sanitization, access control                 |
+| T5   | Denial of Service      | Excessive API requests                             | Rate limiting, WAF                                  |
+| T6   | Elevation of Privilege | Improper API role handling                         | RBAC, token scopes                                  |
+| T7   | Tampering              | Build artifact modified during CI                  | Immutable artifacts, checksums, code signing        |
+| T8   | Information Disclosure | Secrets committed to Git                           | detect-secrets pre-commit, TruffleHog in CI         |
+| T9   | Spoofing               | Malicious GitHub Actions impersonating deploy jobs | OIDC identity tokens, scoped permissions            |
+| T10  | Tampering              | Unsigned or manipulated SBOM                       | Generate SBOM with Syft, validate in CI             |
+| T11  | Elevation of Privilege | CI/CD pipeline executes untrusted scripts          | Review workflows, restrict write tokens             |
+| T12  | Repudiation            | No logs of CI/CD activities                        | Enable Actions logging, audit trail in GitHub       |
+| T13  | Information Disclosure | Exposed SBOM in public S3 bucket                   | Private buckets, signed access URLs                 |
+| T14  | Denial of Service      | Flooding CloudWatch logs to obscure real threats   | Log filtering, alert tuning                         |
+| T15  | Tampering              | Falco rule modifications go unlogged               | Immutable infrastructure, version-controlled config |
 
 ## 3. 📌 Countermeasures and Mitigation
 
