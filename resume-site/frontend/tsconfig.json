@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "types": ["astro/client"]
+  },
+  "include": ["src", "env.d.ts"]
+}
